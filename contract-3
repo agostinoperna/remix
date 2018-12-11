@@ -1,4 +1,7 @@
 pragma solidity ^0.4.0;
+
+//https://medium.com/crypto-currently/build-your-first-smart-contract-fc36a8ff50ca
+
 contract Counter {
     int private count = 0;
     function incrementCounter() public {
