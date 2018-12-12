@@ -1,0 +1,15 @@
+pragma solidity ^0.4.23;
+
+contract PrimoContratto {
+    string nome;
+    uint anni;
+    
+    function setStudente(string _nome, uint _anni) public {
+        nome = _nome;
+        anni = _anni;
+    }
+    
+    function getStudente() public constant returns (string, uint) {
+        return (nome, anni);
+    }
+}
