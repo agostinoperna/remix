@@ -1,0 +1,39 @@
+
+contract Certificato {
+    
+    string set_data;
+    address owner;
+    string set_alunno;
+    string constant docente = "docente: Agostino Perna";
+    string constant corso = "corso: Blockchain, smart contract e criptovalute";
+
+    //imposto il contratto in modo che solo il proprietario lo può modificare
+    function Certificato() public {     
+        owner = msg.sender;
+    }
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+    
+    event Certificazione(
+       string data,
+       string alunno
+
+    );
+    
+
+    function setCertificazione(string data, string alunno) onlyOwner public {
+       // dati corsista
+       set_data = data;
+       set_alunno = alunno;
+       
+       Certificazione(data, alunno);
+       
+    }
+    
+    function leggiCertificazione() view public returns (string, string, string, string) {
+       return (docente, corso, set_data, set_alunno);
+    }
+
+}
